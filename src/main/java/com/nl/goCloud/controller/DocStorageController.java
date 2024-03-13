@@ -3,6 +3,7 @@ package com.nl.goCloud.controller;
 import com.azure.core.util.BinaryData;
 import com.azure.storage.blob.BlobServiceClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,13 +21,14 @@ public class DocStorageController {
 
     BlobServiceClient blobService= new BlobServiceClientBuilder().connectionString(connectionString).buildClient();
 
+    @ApiOperation(value = "Read Files")
     @GetMapping("/readBlobFile")
     public String readBlobFile(String contentId) {
         return String.valueOf(
             blobService.getBlobContainerClient(container).getBlobClient(contentId+".content").downloadContent());
 
     }
-
+    @ApiOperation(value = "Write Files")
     @PostMapping("/writeBlobFile")
     public String writeBlobFile(@RequestBody String data) {
 
