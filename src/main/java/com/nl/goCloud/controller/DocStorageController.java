@@ -5,10 +5,7 @@ import com.azure.storage.blob.BlobServiceClient;
 import com.azure.storage.blob.BlobServiceClientBuilder;
 import io.swagger.annotations.ApiOperation;
 import jakarta.websocket.server.PathParam;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Base64;
 import java.util.UUID;
@@ -24,7 +21,8 @@ public class DocStorageController {
 
     @ApiOperation(value = "Read Files")
     @GetMapping("/readBlobFile/{contentId}")
-    public String readBlobFile(@PathParam("contentId") String contentId) {
+    public String readBlobFile(@PathVariable("contentId") String contentId) {
+        System.out.println("contentId:");
         return String.valueOf(
             blobService.getBlobContainerClient(container).getBlobClient(contentId+".content").downloadContent());
 
