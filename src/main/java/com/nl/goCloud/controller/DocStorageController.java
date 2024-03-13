@@ -23,7 +23,7 @@ public class DocStorageController {
     BlobServiceClient blobService= new BlobServiceClientBuilder().connectionString(connectionString).buildClient();
 
     @ApiOperation(value = "Read Files")
-    @GetMapping("/readBlobFile")
+    @GetMapping("/readBlobFile/{contentId}")
     public String readBlobFile(@PathParam("contentId") String contentId) {
         return String.valueOf(
             blobService.getBlobContainerClient(container).getBlobClient(contentId+".content").downloadContent());
@@ -37,7 +37,7 @@ public class DocStorageController {
 
         String documentId= UUID.randomUUID().toString();
         blobService.getBlobContainerClient(container).getBlobClient(documentId+".content").upload(BinaryData.fromBytes(content));
-        return "file was updated";
+        return "file was uploaded: "+documentId;
     }
 }
       
