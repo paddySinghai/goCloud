@@ -14,7 +14,7 @@
 	<name>goCloud</name>
 	<description>Demo project for goCloud</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>14</java.version>
 		<spring-cloud-azure.version>5.10.0</spring-cloud-azure.version>
 	</properties>
 	<dependencies>
@@ -64,7 +64,15 @@
 					</excludes>
 				</configuration>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>14</source>
+					<target>14</target>
+				</configuration>
+            </plugin>
+        </plugins>
 	</build>
 
 </project>
