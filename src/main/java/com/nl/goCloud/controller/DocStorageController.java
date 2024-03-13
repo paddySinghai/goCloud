@@ -14,9 +14,9 @@ import java.util.UUID;
 @RestController
 public class DocStorageController {
 
-    String connectionString="";
+    String connectionString="DefaultEndpointsProtocol=https;AccountName=goclouddocs;AccountKey=OrTIWcIKQU7RevlNN+fqghD3crPIwwqLxvxJDVZsmI1KSkG3hbfy1vuC2qbGPSxjRFocsQojMy9y+ASttDaPlg==;EndpointSuffix=core.windows.net";
 
-    String container="";
+    String container="documents";
 
     BlobServiceClient blobService= new BlobServiceClientBuilder().connectionString(connectionString).buildClient();
 
